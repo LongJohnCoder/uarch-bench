@@ -17,6 +17,7 @@ before_install:
   - CXX=clangzz
 
 script:
+- set -e
 - echo "CXX is ${CXX}"
 - make USE_LIBPFC=0
 - ./uarch-bench --test-name=default/*
