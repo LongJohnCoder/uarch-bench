@@ -14,6 +14,6 @@ matrix:
 
 
 script:
-- echo "CXX is $(CXX)"
+- echo "CXX is ${CXX}"
 - make USE_LIBPFC=0
 - ./uarch-bench --test-name=default/*
