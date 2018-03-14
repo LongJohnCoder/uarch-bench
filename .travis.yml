@@ -6,7 +6,7 @@ branches:
 
 addons:
   apt:
-    packages:
+    packages: &default_pacakges
       - nasm
 
 matrix:
@@ -22,6 +22,7 @@ matrix:
           sources:
           - ubuntu-toolchain-r-test
           packages:
+          - *default_pacakges
           - gcc-6
           - g++-6
     - env: TRUE_CC=clang-6.0 TRUE_CXX=clang++-6.0
@@ -31,6 +32,7 @@ matrix:
           - llvm-toolchain-trusty-6.0
           - ubuntu-toolchain-r-test
           packages:
+          - *default_pacakges
           - clang-6.0
           - clang++-6.0
 
