@@ -9,12 +9,33 @@ matrix:
     # default travis gcc (currently 4.8.4) - doesn't support <regex>
     # - compiler: gcc busted
     # default travis clang (currently 5.0) - doesn't support <regex>
-    - env: CXXFLAGS=-stdlib=libc++ CXX=clang
-    
-    # - env: CC_OVERRIDE=gcc-6 CXX_OVERRIDE=g++-6
+    - compiler: clang
+      env: CXXFLAGS=-stdlib=libc++
+    - env: TRUE_CC=gcc-6 TRUE_CXX=g++-6
+      addons:
+        apt:
+          sources:
+          - ubuntu-toolchain-r-test
+          packages:
+          - gcc-6
+          - g++-6
+          - nasm
+    - env: TRUE_CC=clang-6.0 TRUE_CXX=clang++-6.0
+      addons:
+        apt:
+          sources:
+          - llvm-toolchain-trusty-6.0
+          - ubuntu-toolchain-r-test
+          packages:
+          - clang-6.0
+          - clang++-6.0
+          - nasm
 
 before_install:
-  - CXX=clangzz
+# The TravisCI framework will set CC and CXX after the env commands specified in the matrix are run, overwriting whatever
+# we've specified there, so we need to reset them here. See also https://github.com/travis-ci/travis-ci/issues/6633 . 
+  - CC=$TRUE_CC
+  - CXX=$TRUE_CXX
 
 script:
 - set -e
