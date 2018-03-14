@@ -10,8 +10,11 @@ matrix:
     # - compiler: gcc busted
     # default travis clang (currently 5.0) - doesn't support <regex>
     - env: CXXFLAGS=-stdlib=libc++ CXX=clang
+    
     # - env: CC_OVERRIDE=gcc-6 CXX_OVERRIDE=g++-6
 
+before_install:
+  - CXX=clangzz
 
 script:
 - echo "CXX is ${CXX}"
