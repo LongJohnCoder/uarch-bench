@@ -38,7 +38,6 @@ before_install:
   - CXX=${CXX:-$TRUE_CXX}
 
 script:
-- set -e
-- echo "CXX is ${CXX}"
+- set -e && echo "CC is ${CC}, CXX is ${CXX}"
 - make USE_LIBPFC=0
 - ./uarch-bench --test-name=default/*
