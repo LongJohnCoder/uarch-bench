@@ -6,6 +6,8 @@ branches:
 
 matrix:
   include:
+    - compiler: gcc
+    - compiler: clang
     - env: CC_OVERRIDE=gcc-6 CXX_OVERRIDE=g++-6
       addons:
         apt:
