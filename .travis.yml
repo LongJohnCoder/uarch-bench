@@ -9,20 +9,14 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages: &default_pacakges
-      - nasm
-      - gcc-4.9
-      - g++-4.9
-      
-compiler:
-  - gcc-4.9
-  - g++-4.9      
+      - nasm 
 
 matrix:
   include:
     # default travis gcc (currently 4.8.4) - doesn't support <regex>
     # - compiler: gcc busted
     # default travis clang (currently 5.0) - doesn't support <regex>
-    - compiler: clang
+    - compiler: clang-5.0
       env: COMPILER=CXXFLAGS=-stdlib=libc++ FOO=XXX BAR=$FOO BAR1=${FOO}
       addons:
         apt:
