@@ -19,7 +19,7 @@ matrix:
   include:
       # clang-5.0 is the default installed on travis VMs
     - compiler: clang-5.0
-      env: TRUE_CC=clang-5.0 TRUE_CXX=clang++ CXXFLAGS=-stdlib=libc++
+      env: TRUE_CC=clang TRUE_CXX=clang++ CXXFLAGS=-stdlib=libc++
       addons:
         apt:
           sources:
@@ -54,6 +54,7 @@ matrix:
       addons:
         apt:
           sources:
+          - *default_sources
           - llvm-toolchain-trusty-6.0
           packages:
           - *default_pacakges
@@ -61,12 +62,12 @@ matrix:
           - clang++-6.0
 
 before_install:
-# The TravisCI framework will set CC and CXX after the env commands specified in the matrix are run, overwriting whatever
+# Travis will set CC and CXX after the env commands specified in the matrix are run, overwriting whatever
 # we've specified there, so we need to reset them here. See also https://github.com/travis-ci/travis-ci/issues/6633 . 
   - CC=${TRUE_CC:-$CC}
   - CXX=${TRUE_CXX:-$CXX}
 
 script:
-- set -e && echo "CC is ${CC}, CXX is ${CXX}" && ${CC} --version
+- set -e && echo "CC is ${CC}, CXX is ${CXX}" && ${CC} --version && ${CXX} --version
 - make USE_LIBPFC=0
 - ./uarch-bench --test-name=default/*
