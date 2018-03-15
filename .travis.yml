@@ -19,6 +19,7 @@ matrix:
       addons:
         apt:
           packages:
+            - *default_pacakges
             - libc++1
     - env: TRUE_CC=gcc-6 TRUE_CXX=g++-6
       addons:
