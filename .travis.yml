@@ -65,6 +65,10 @@ before_install:
   - CXX=${TRUE_CXX:-$CXX}
 
 script:
+- which clang
+- which clang++
+- which clang-5.0
+- which clang++-5.0
 - set -e && echo "CC is ${CC}, CXX is ${CXX}" && ${CC} --version
 - make USE_LIBPFC=0
 - ./uarch-bench --test-name=default/*
