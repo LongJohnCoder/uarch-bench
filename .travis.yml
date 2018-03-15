@@ -16,7 +16,7 @@ matrix:
     # default travis gcc (currently 4.8.4) - doesn't support <regex>
     # - compiler: gcc busted
     # default travis clang (currently 5.0) - doesn't support <regex>
-    - compiler: clang-5.0
+    - compiler: clang-5.0 
       env: COMPILER=CXXFLAGS=-stdlib=libc++ FOO=XXX BAR=$FOO BAR1=${FOO}
       addons:
         apt:
