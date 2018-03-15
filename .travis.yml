@@ -17,17 +17,25 @@ env:
 
 matrix:
   include:
-    # default travis gcc (currently 4.8.4) - doesn't support <regex>
-    # - compiler: gcc busted
-    # default travis clang (currently 5.0) - doesn't support <regex>
+      # clang-5.0 is the default installed on travis VMs
     - compiler: clang-5.0
-      env: TRUE_CC=clang-5 TRUE_CXX=clang++-5 CXXFLAGS=-stdlib=libc++
+      env: TRUE_CC=clang-5.0 TRUE_CXX=clang++-5.0 CXXFLAGS=-stdlib=libc++
       addons:
         apt:
           packages:
             - *default_pacakges
             - libc++abi1
             - libc++1
+    - compiler: gcc-4.9
+      env: TRUE_CC=gcc-4.9 TRUE_CXX=g++-4.9
+      addons:
+        apt:
+          sources:
+          - *default_sources
+          packages:
+          - *default_pacakges
+          - gcc-4.9
+          - g++-4.9
     - compiler: gcc-6
       env: TRUE_CC=gcc-6 TRUE_CXX=g++-6
       addons:
