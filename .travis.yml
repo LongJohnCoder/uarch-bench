@@ -10,7 +10,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages: &default_pacakges
       - linux-headers-generic
-      #- linux-headers-4.14.12-041412-generic
+      - linux-headers-4.4.0-97-generic
       
 env:
   global:
