@@ -10,13 +10,14 @@ addons:
       - ubuntu-toolchain-r-test
     packages: &default_pacakges
       - linux-headers-generic
-      - linux-headers-4.14.12-041412-generic
+      #- linux-headers-4.14.12-041412-generic
       
 env:
   global:
     - GLOBAL=value
 
-
+git:
+  submodules: false
 
 before_install:
 # Travis will set CC and CXX after the env commands specified in the matrix are run, overwriting whatever
@@ -25,6 +26,7 @@ before_install:
   - CXX=${TRUE_CXX:-$CXX}
 
 script:
+- apt list linux-headers-*
 - uname -a
 - uname -r
 - ls -l /lib/modules
