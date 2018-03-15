@@ -6,7 +6,7 @@ branches:
 
 addons:
   apt:
-    sources:
+    sources: &default_sources
       - ubuntu-toolchain-r-test
     packages: &default_pacakges
       - nasm 
@@ -32,6 +32,8 @@ matrix:
       env: TRUE_CC=gcc-6 TRUE_CXX=g++-6
       addons:
         apt:
+          sources:
+          - *default_sources
           packages:
           - *default_pacakges
           - gcc-6
