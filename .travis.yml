@@ -19,7 +19,7 @@ matrix:
   include:
       # clang-5.0 is the default installed on travis VMs
     - compiler: clang-5.0
-      env: TRUE_CC=clang-5.0 TRUE_CXX=clang++-5.0 CXXFLAGS=-stdlib=libc++
+      env: TRUE_CC=clang-5.0 TRUE_CXX=clang++ CXXFLAGS=-stdlib=libc++
       addons:
         apt:
           sources:
