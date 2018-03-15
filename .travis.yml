@@ -8,6 +8,9 @@ addons:
   apt:
     packages: &default_pacakges
       - nasm
+      
+compiler:
+  - gcc-4.9      
 
 matrix:
   include:
@@ -20,6 +23,7 @@ matrix:
         apt:
           packages:
             - *default_pacakges
+            - libc++abi1
             - libc++1
     - env: TRUE_CC=gcc-6 TRUE_CXX=g++-6
       addons:
