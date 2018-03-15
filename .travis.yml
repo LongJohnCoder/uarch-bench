@@ -22,6 +22,8 @@ matrix:
       env: TRUE_CC=clang-5.0 TRUE_CXX=clang++-5.0 CXXFLAGS=-stdlib=libc++
       addons:
         apt:
+          sources:
+            - llvm-toolchain-trusty-5.0
           packages:
             - *default_pacakges
             - clang++-5.0
