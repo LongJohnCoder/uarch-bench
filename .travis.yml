@@ -16,6 +16,10 @@ matrix:
     # default travis clang (currently 5.0) - doesn't support <regex>
     - compiler: clang
       env: CXXFLAGS=-stdlib=libc++
+      addons:
+        apt:
+          packages:
+            - libc++1
     - env: TRUE_CC=gcc-6 TRUE_CXX=g++-6
       addons:
         apt:
