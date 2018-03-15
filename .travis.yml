@@ -6,6 +6,8 @@ branches:
 
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
     packages: &default_pacakges
       - nasm
       - gcc-4.9
@@ -14,6 +16,7 @@ addons:
 compiler:
   - gcc-4.9
   - g++-4.9      
+
 
 
 before_install:
