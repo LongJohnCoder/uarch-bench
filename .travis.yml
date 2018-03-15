@@ -10,8 +10,6 @@ addons:
       - ubuntu-toolchain-r-test
     packages: &default_pacakges
       - linux-headers-generic
-      - nasm
-      - yasm
       
 env:
   global:
@@ -27,6 +25,7 @@ before_install:
 
 script:
 - uname -a
+- uname -r
 - ls -l /lib/modules
 - make
 - ./uarch-bench --test-name=default/*
