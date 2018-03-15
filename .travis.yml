@@ -9,7 +9,8 @@ addons:
     sources: &default_sources
       - ubuntu-toolchain-r-test
     packages: &default_pacakges
-      - nasm 
+      - nasm
+      - yasm
       
 env:
   global:
@@ -26,7 +27,6 @@ matrix:
             - llvm-toolchain-trusty-5.0
           packages:
             - *default_pacakges
-            - clang++-5.0
             - libc++abi1
             - libc++1
     - compiler: gcc-4.9
