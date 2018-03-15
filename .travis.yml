@@ -21,23 +21,23 @@ matrix:
     # - compiler: gcc busted
     # default travis clang (currently 5.0) - doesn't support <regex>
     - compiler: clang-5.0
-      env: CXXFLAGS=-stdlib=libc++
+      env: TRUE_CC=clang-5 TRUE_CXX=clang++-5 CXXFLAGS=-stdlib=libc++
       addons:
         apt:
           packages:
             - *default_pacakges
             - libc++abi1
             - libc++1
-    - env: TRUE_CC=gcc-6 TRUE_CXX=g++-6
+    - compiler: gcc-6
+      env: TRUE_CC=gcc-6 TRUE_CXX=g++-6
       addons:
         apt:
-          sources:
-          - ubuntu-toolchain-r-test
           packages:
           - *default_pacakges
           - gcc-6
           - g++-6
-    - env: TRUE_CC=clang-6.0 TRUE_CXX=clang++-6.0
+    - compiler: clang-6.0
+      env: TRUE_CC=clang-6.0 TRUE_CXX=clang++-6.0
       addons:
         apt:
           sources:
@@ -55,6 +55,6 @@ before_install:
   - CXX=${TRUE_CXX:-$CXX}
 
 script:
-- set -e && echo "CC is ${CC}, CXX is ${CXX}"
+- set -e && echo "CC is ${CC}, CXX is ${CXX}" && $(CC) --version
 - make USE_LIBPFC=0
 - ./uarch-bench --test-name=default/*
